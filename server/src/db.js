@@ -1,9 +1,13 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
-import * as schema from './drizzle/schema.js'
+import * as schema from '../drizzle/schema.js'
+import dotenv from 'dotenv'
 
+dotenv.config({ path: '.././.env' })
 
 const client = postgres(process.env.DATABASE_URL)
 
 
-export const db = drizzle(client, { schema })
+ const db = drizzle(client, { schema })
+
+ export default db;
