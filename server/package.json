@@ -5,7 +5,6 @@
   "license": "ISC",
   "author": "Diptarka Roy",
   "type": "module",
-  
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
@@ -14,13 +13,17 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "postgres": "^3.4.7"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "drizzle-kit": "^0.31.8",
     "nodemon": "^3.1.11"
   }
