@@ -22,4 +22,4 @@ export const expenseSplits = pgTable('expense_splits', {
   isSettled: boolean('is_settled').default(false),
   settledAt: timestamp('settled_at'),
   settledWith: uuid('settled_with').references(() => users.id)
-})
+}) 
