@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config({ path: '../.env' })
 import authRoutes from './src/routes/auth.routes.js'
 import groupRoutes from './src/routes/group.routes.js'
+import expenseRoutes from './src/routes/expense.routes.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -16,6 +17,7 @@ app.use(express.json())
 // Routes
 app.use('/api/auth', authRoutes)
 app.use('/api/groups', groupRoutes) 
+app.use('/api/expenses', expenseRoutes) 
 
 
 // Test route
