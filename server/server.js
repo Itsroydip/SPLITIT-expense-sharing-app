@@ -6,6 +6,7 @@ import authRoutes from './src/routes/auth.routes.js'
 import groupRoutes from './src/routes/group.routes.js'
 import expenseRoutes from './src/routes/expense.routes.js'
 import settlementRoutes from './src/routes/settlement.routes.js'
+import dashboardRoutes from './src/routes/dashboard.routes.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -20,7 +21,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/groups', groupRoutes) 
 app.use('/api/expenses', expenseRoutes) 
 app.use('/api/settlements', settlementRoutes)
-
+app.use('/api/dashboard', dashboardRoutes) 
 
 // Test route
 app.get('/api/health', (req, res) => {
