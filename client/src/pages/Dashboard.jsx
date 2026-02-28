@@ -293,17 +293,17 @@ const Dashboard = () => {
            {/* Bottom Lists Row */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-6"> 
             {/* My Groups */}
-            <div className="lg:col-span-4 space-y-4 ">
+            <div className="lg:col-span-4 space-y-4 ">              
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-lg font-bold">My Groups</h3>
-                  <button className="flex items-center justify-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-                    <span className="material-symbols-outlined text-sm">add</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Add Group</span>
-                  </button>
-                </div>
-                <button className="text-blue-500 text-xs font-bold hover:underline">VIEW ALL</button>
+                <h3 className="text-lg font-bold">My Groups</h3>
+                <button className="flex items-center justify-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors cursor-pointer"
+                  onClick={() => navigate('/groups/create')}
+                >
+                  <span className="material-symbols-outlined text-sm">add</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider">Add Group</span>
+                </button>
               </div>
+            
               
               {groupsData.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-10">

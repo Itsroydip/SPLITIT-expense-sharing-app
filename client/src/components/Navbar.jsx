@@ -19,9 +19,9 @@ const Navbar = () => {
         <Logo className="size-8 text-blue-600" />
         
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-blue-500 font-bold text-sm border-b-2 border-blue-500 py-1">Dashboard</a>
-          <a href="#" className="text-gray-500 font-medium text-sm hover:text-blue-500 transition-colors">Groups</a>
-          <a href="#" className="text-gray-500 font-medium text-sm hover:text-blue-500 transition-colors">Friends</a>
+          <a href="/dashboard" className="text-blue-500 font-bold text-sm border-b-2 border-blue-500 py-1" >Dashboard</a>
+          <a href="/groups/create" className="text-gray-500 font-medium text-sm hover:text-blue-500 transition-colors">Groups</a>
+          <a href="/friends" className="text-gray-500 font-medium text-sm hover:text-blue-500 transition-colors">Friends</a>
         </nav>
 
         <div className="flex items-center gap-6">
