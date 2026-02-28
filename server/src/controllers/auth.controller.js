@@ -1,6 +1,6 @@
 import db  from '../db.js'
 import { users } from '../models/user.model.js'
-import { eq } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 import { hashPassword, comparePassword } from '../utils/password.js'
 import { generateToken } from '../utils/jwt.js'
 
@@ -187,6 +187,55 @@ export const getCurrentUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to get user data'
+    })
+  }
+}
+
+
+//<---------------------------search users using username or full name---------------------------->
+export const searchUsers = async (req, res) => {
+  try {
+    const { q } = req.query
+    const currentUserId = req.user.userId
+
+    // Validation
+    if (!q || q.trim().length < 2) {
+      return res.json({
+        success: true,
+        data: { users: [] },
+        message: 'Search term must be at least 2 characters'
+      })
+    }
+
+    const searchTerm = q.trim().toLowerCase()
+
+    // Search users by username or full name (case-insensitive)
+    // Exclude the current user from results
+    const searchResults = await db
+      .select({
+        id: users.id,
+        username: users.username,
+        fullName: users.fullName,
+        avatarUrl: users.avatarUrl
+      })
+      .from(users)
+      .where(
+        sql`(
+          LOWER(${users.username}) LIKE ${`%${searchTerm}%`} OR 
+          LOWER(${users.fullName}) LIKE ${`%${searchTerm}%`}
+        ) AND ${users.id} != ${currentUserId}`
+      )
+      .limit(10) // Limit to 10 results
+
+    res.json({
+      success: true,
+      data: { users: searchResults }
+    })
+  } catch (error) {
+    console.error('Search users error:', error)
+    res.status(500).json({
+      success: false,
+      message: 'Failed to search users'
     })
   }
 }
