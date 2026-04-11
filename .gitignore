@@ -28,3 +28,6 @@ npm-debug.log*
 
 # Database
 postgres_data/
+
+#uploads
+server/uploads/
